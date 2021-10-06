@@ -27,6 +27,7 @@ inquirer
             <link rel="stylesheet" type="text/css" href="style.css" />
         </head>
         
+    // beautify
         <body style="margin: 0; padding: 0; background-color: pink;">
             <header style="
                         border: solid 2px plum;
