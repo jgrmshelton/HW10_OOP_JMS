@@ -5,9 +5,6 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-const outputDir = path.resolve(__dirname, "output");
-const outputPath = path.join(outputDir, "team.html");
-
 const render = require("./lib/pg-render");
 
 const teamQuestions = [
@@ -81,48 +78,48 @@ const generateTeam = () => {
         .then((answers1) => {
           if (answers1.role === "Manager") {
             const manager = new Manager(
-              answers1.name,
-              answers1.id,
-              answers1.email,
-              answers1.role,
-              answers2.officeNumber
+              answers.name,
+              answers.id,
+              answers.email,
+              answers.role,
+              answers1.officeNumber
             );
             team.push(manager);
           }
 
           if (answers1.role === "Engineer") {
             const engineer = new Engineer(
-              answers1.name,
-              answers1.id,
-              answers1.email,
-              answers1.role,
-              answers2.github
+              answers.name,
+              answers.id,
+              answers.email,
+              answers.role,
+              answers1.github
             );
             team.push(engineer);
           }
 
           if (answers1.role === "Employee") {
-            const engineer = new Employee(
-              answers1.name,
-              answers1.id,
-              answers1.role,
-              answers2.email,
+            const employee = new Employee(
+              answers.name,
+              answers.id,
+              answers.role,
+              answers1.email,
             );
-            team.push(Employee);
+            team.push(employee);
           }
 
           if (answers1.role === "Intern") {
             const intern = new Intern(
-              answers1.name,
-              answers1.id,
-              answers1.email,
-              answers1.role,
-              answers2.school
+              answers.name,
+              answers.id,
+              answers.email,
+              answers.role,
+              answers1.school
             );
             team.push(intern);
           }
 
-          if (answers2.addMember) {
+          if (answers1.addMember) {
             generateTeam();
           } else {
             team.forEach((team) => {
